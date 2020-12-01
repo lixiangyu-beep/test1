@@ -1,0 +1,30 @@
+###服务启动端口号
+server:
+  port: 8200
+  tomcat:
+    max-threads: 7      # tomcat最大线程数，默认为200
+###服务名称(服务注册到eureka名称)  
+spring:
+    application:
+        name: fh-order
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+           defaultZone: http://127.0.0.1:8088/eureka
+###客户端,所以需要注册到eureka注册中心
+    registerWithEureka: true
+####获取注册中心拉取注册地址清单,因为此服务也可能是一个消费者
+    fetchRegistry: true
+    
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
